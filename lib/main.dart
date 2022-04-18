@@ -1,4 +1,6 @@
 import 'package:farm_o/SignUp.dart';
+import 'package:farm_o/homepage_k(alt).dart';
+import 'package:farm_o/homepage_p(alt).dart';
 import 'package:farm_o/login.dart';
 import 'package:farm_o/splash.dart';
 import 'package:flutter/material.dart';

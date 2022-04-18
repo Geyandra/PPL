@@ -1,7 +1,7 @@
 import 'package:farm_o/login.dart';
 import 'package:flutter/material.dart';
 import 'components/components.dart';
-import 'homepage_p.dart';
+import 'homepage_p(alt).dart';
 
 class signup extends StatelessWidget {
   const signup({ Key? key }) : super(key: key);
