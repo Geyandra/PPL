@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "416166813095",
+    "project_id": "farm-o-ed900",
+    "storage_bucket": "farm-o-ed900.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416166813095:android:7abf1abce509ebc552ea82",
+        "android_client_info": {
+          "package_name": "com.example.farm_o"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416166813095-3m43r70rb89o3eslt4vc8gr2ume57605.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADcTJ5YJH21vWQ1gzJCZfmb3RSjgGHZuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416166813095-3m43r70rb89o3eslt4vc8gr2ume57605.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

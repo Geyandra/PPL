@@ -1,4 +1,6 @@
+import 'package:farm_o/homepage_k(alt).dart';
 import 'package:farm_o/login.dart';
+import 'package:farm_o/login_E.dart';
 import 'package:flutter/material.dart';
 import 'components/components.dart';
 import 'homepage_p(alt).dart';
@@ -37,7 +39,7 @@ class signup extends StatelessWidget {
                   )),
                   child: ElevatedButton(
                     onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder:(context){return login();},),);},
+                    MaterialPageRoute(builder:(context){return login_E();},),);},
                     child: Text("Login", 
                     style: TextStyle(
                       fontFamily: "Miriam Libre",
@@ -71,33 +73,33 @@ class signup extends StatelessWidget {
                 ),),
                 ),
                 RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight, 
-                hinText: "Name", 
-                icon: Icons.person, 
-                onChanged: (value) {  }),
+                hinText: "First Name", 
+                icon: Icons.person_add, 
+                ),
                 RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight, 
-                hinText: "Birthdate", 
-                icon: Icons.date_range_outlined, 
-                onChanged: (value) {}),
+                hinText: "Last Name", 
+                icon: Icons.person_add, 
+                ),
                 RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight,
                 hinText: "Phone Number",
                 icon: Icons.phone_android,
-                onChanged: (value) {  }
+                
                 ),
                 RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight,
                 hinText: 'Your Email',
                 icon: Icons.mail_outline_sharp,
-                onChanged: (value) {  },),
+                ),
                 RoundedPasswordField(screenWidth: screenWidth, screenHeight: screenHeight, 
-                onChanged: (value) {  }, 
+                 
                 hinText: 'Password',),
                 RoundedPasswordField(screenWidth: screenWidth, screenHeight: screenHeight, 
                 hinText: "Confirm Password", 
-                onChanged: (values) {}),
+                ),
                 Container(
                 padding: EdgeInsets.only(top: screenHeight*0.1, bottom: screenHeight*0.15),
                 child: ElevatedButton(
                     onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder:(context){return homepage_p();},),);},
+                    MaterialPageRoute(builder:(context){return homepage_k();},),);},
                     child: Text("Sign Up", 
                     style: TextStyle(
                       fontFamily: "Miriam Libre",

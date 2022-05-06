@@ -2,6 +2,7 @@
 
 import 'package:farm_o/SignUp.dart';
 import 'package:farm_o/login.dart';
+import 'package:farm_o/login_E.dart';
 import 'package:flutter/material.dart';
 
 class splash extends StatelessWidget {
@@ -44,14 +45,42 @@ class splash extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(top: screenHeight*0.1),
+                padding: EdgeInsets.only(top: screenHeight*0.03),
                 child: ElevatedButton(
                     onPressed: () {Navigator.push(context,
                     MaterialPageRoute(builder:(context){return login();},),);},
-                    child: Text("Login", 
+                    child: Text("Login As Owner", 
                     style: TextStyle(
                       fontFamily: "Miriam Libre",
-                      fontSize: screenWidth*0.03,
+                      fontSize: screenWidth*0.02,
+                      fontWeight: FontWeight.bold,
+                      ),
+                      ),
+                    style: 
+                    ButtonStyle(
+                      minimumSize: MaterialStateProperty.all(Size(screenWidth*0.2, screenHeight*0.1)),
+                      shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
+                        return RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50)
+                        );}), 
+                      foregroundColor: MaterialStateProperty.all(Colors.black), 
+                      backgroundColor: MaterialStateProperty.resolveWith(
+                        (states) => states.any(
+                          (element) => element == MaterialState.pressed)?
+                          Colors.greenAccent : Color.fromRGBO(88, 250, 162, 60)
+                      ),
+                    ),
+                    ),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: screenHeight*0.03),
+                child: ElevatedButton(
+                    onPressed: () {Navigator.push(context,
+                    MaterialPageRoute(builder:(context){return login_E();},),);},
+                    child: Text("Login As Employee", 
+                    style: TextStyle(
+                      fontFamily: "Miriam Libre",
+                      fontSize: screenWidth*0.02,
                       fontWeight: FontWeight.bold,
                       ),
                       ),
@@ -79,7 +108,7 @@ class splash extends StatelessWidget {
                     child: Text("Sign Up", 
                     style: TextStyle(
                       fontFamily: "Miriam Libre",
-                      fontSize: screenWidth*0.03,
+                      fontSize: screenWidth*0.02,
                       fontWeight: FontWeight.bold,
                       ),
                       ),
@@ -98,7 +127,7 @@ class splash extends StatelessWidget {
                       ),
                     ),
                     ),
-              )
+              ),
             ],
           ),
         ],

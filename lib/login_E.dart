@@ -2,12 +2,13 @@
 
 import 'dart:ui';
 import 'package:farm_o/SignUp.dart';
+import 'package:farm_o/homepage_k(alt).dart';
 import 'package:farm_o/homepage_p(alt).dart';
 import 'components/components.dart';
 import 'package:flutter/material.dart';
 
-class login extends StatelessWidget {
-  const login({ Key? key }) : super(key: key);
+class login_E extends StatelessWidget {
+  const login_E({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +41,10 @@ class login extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {Navigator.push(context,
                     MaterialPageRoute(builder:(context){return signup();},),);},
-                    child: Text("Sign Up Employee", 
+                    child: Text("Sign Up", 
                     style: TextStyle(
                       fontFamily: "Miriam Libre",
-                      fontSize: screenWidth*0.008,
+                      fontSize: screenWidth*0.01,
                       fontWeight: FontWeight.bold,
                       ),
                       ),
@@ -65,7 +66,7 @@ class login extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.only(top: screenHeight*0.2),
-                  child: Text("Login Farm'O Owner", style: TextStyle(
+                  child: Text("Login Farm'O Employee", style: TextStyle(
                   fontFamily: "Mohave",
                   fontSize: screenWidth*0.06,
                   fontWeight: FontWeight.w800,
@@ -77,13 +78,12 @@ class login extends StatelessWidget {
                 icon: Icons.mail_outline_sharp,
                 ),
                 RoundedPasswordField(screenWidth: screenWidth, screenHeight: screenHeight, 
-                 
                 hinText: 'Password',),
                 Container(
                 padding: EdgeInsets.only(top: screenHeight*0.1),
                 child: ElevatedButton(
                     onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder:(context){return homepage_p();},),);},
+                    MaterialPageRoute(builder:(context){return homepage_k();},),);},
                     child: Text("Login", 
                     style: TextStyle(
                       fontFamily: "Miriam Libre",

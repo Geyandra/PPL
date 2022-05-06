@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class RoundedPasswordField extends StatelessWidget {
   final String hinText;
-  final ValueChanged<String> onChanged;
+  final control;
   const RoundedPasswordField({
     Key? key,
     required this.screenWidth,
     required this.screenHeight,
     required this.hinText,
-    required this.onChanged,
+    this.control,
   }) : super(key: key);
 
   final double screenWidth;
@@ -18,7 +18,7 @@ class RoundedPasswordField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFieldContainer(screenWidth: screenWidth, screenHeight: screenHeight,
      child: TextField(
-       onChanged: onChanged,
+       controller: control,
        obscureText: true,
        decoration: InputDecoration(
          hintText: hinText,
@@ -33,14 +33,14 @@ class RoundedPasswordField extends StatelessWidget {
 class RoundedInputField extends StatelessWidget {
   final String hinText;
   final IconData icon;
-  final ValueChanged<String> onChanged;
+  final control;
   const RoundedInputField({
     Key? key,
     required this.screenWidth,
     required this.screenHeight, 
     required this.hinText, 
     required this.icon,
-    required this.onChanged,
+    this.control,
   }) : super(key: key);
 
   final double screenWidth;
@@ -52,7 +52,7 @@ class RoundedInputField extends StatelessWidget {
       screenWidth: screenWidth, 
       screenHeight: screenHeight, 
     child: TextField(
-      onChanged: onChanged,
+      controller: control,
       decoration: InputDecoration(
         icon: Icon(icon),
         hintText: hinText,

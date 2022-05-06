@@ -100,5 +100,28 @@
       loadMainDartJs();
     }
   </script>
+<script src="https://www.gstatic.com/firebasejs/9.7.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.7.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.7.0/firebase-firestore.js"></script>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.7.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDQezQ6tFIpA0QL0fIbvyK-FzcqAY44IhU",
+    authDomain: "create-d22d5.firebaseapp.com",
+    projectId: "create-d22d5",
+    storageBucket: "create-d22d5.appspot.com",
+    messagingSenderId: "281554209119",
+    appId: "1:281554209119:web:704a0abc4ca66d3d7c0eea"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+
 </body>
 </html>
