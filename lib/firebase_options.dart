@@ -33,14 +33,12 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'xxxxxxxxxxxxxxxxxxx',
-    appId: 'xxxxxxxxxxxxxxxxxxx',
-    messagingSenderId: 'xxxxxxxxxxxxxxxxxxx',
-    projectId: 'xxxxxxxxxxxxxxxxxxx',
-    authDomain: 'xxxxxxxxxxxxxxxxxxx',
-    databaseURL: 'xxxxxxxxxxxxxxxxxxx',
-    storageBucket: 'xxxxxxxxxxxxxxxxxxx',
-    measurementId: 'xxxxxxxxxxxxxxxxxxx',
+    apiKey: "AIzaSyDQezQ6tFIpA0QL0fIbvyK-FzcqAY44IhU",
+    authDomain: "create-d22d5.firebaseapp.com",
+    projectId: "create-d22d5",
+    storageBucket: "create-d22d5.appspot.com",
+    messagingSenderId: "281554209119",
+    appId: "1:281554209119:web:704a0abc4ca66d3d7c0eea"
   );
 
   static const FirebaseOptions android = FirebaseOptions(

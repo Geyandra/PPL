@@ -1,17 +1,9 @@
-import 'package:farm_o/Features/Penjadwalan/show_data_asupan_vitamin.dart';
-import 'package:farm_o/Features/Penjadwalan/show_data_pakan.dart';
-import 'package:farm_o/Features/Populasi/show_data_k.dart';
-import 'package:farm_o/Features/Populasi/show_data_p.dart';
-import 'package:farm_o/SignUp.dart';
-import 'package:farm_o/homepage_k(alt).dart';
-import 'package:farm_o/homepage_p(alt).dart';
-import 'package:farm_o/login.dart';
-import 'package:farm_o/signup.dart';
+import 'package:farm_o/karyawan/signup.dart';
+import 'package:farm_o/profile.dart';
 import 'package:farm_o/splash.dart';
 import 'package:flutter/material.dart';
-import 'Features/Penjadwalan/penjadwalan_hewan_ternak.dart';
 import 'package:firebase_core/firebase_core.dart';
- import 'firebase_options.dart';
+import 'firebase_options.dart';
 
 Future <void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: show_data_asupan_vitamin(),
+      home: splash(),
     );
   }
 }

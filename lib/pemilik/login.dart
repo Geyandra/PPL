@@ -1,12 +1,11 @@
-import 'package:farm_o/homepage_k(alt).dart';
-import 'package:farm_o/login.dart';
-import 'package:farm_o/login_E.dart';
+import 'package:farm_o/karyawan/signup.dart';
+import 'package:farm_o/pemilik/homepage_p(alt).dart';
+import 'package:farm_o/signup_p.dart';
+import '../components/components.dart';
 import 'package:flutter/material.dart';
-import 'components/components.dart';
-import 'homepage_p(alt).dart';
 
-class signup extends StatelessWidget {
-  const signup({ Key? key }) : super(key: key);
+class login extends StatelessWidget {
+  const login({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +14,7 @@ class signup extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: const Color.fromARGB(255, 149, 207, 151),
-        body: SingleChildScrollView(
-          child: Stack(
+        body: Stack(
           alignment: Alignment.center,
           children: <Widget>[
             Positioned(
@@ -39,11 +37,11 @@ class signup extends StatelessWidget {
                   )),
                   child: ElevatedButton(
                     onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder:(context){return login_E();},),);},
-                    child: Text("Login", 
+                    MaterialPageRoute(builder:(context){return signup_p();},),);},
+                    child: Text("Sign Up", 
                     style: TextStyle(
                       fontFamily: "Miriam Libre",
-                      fontSize: screenWidth*0.01,
+                      fontSize: screenWidth*0.008,
                       fontWeight: FontWeight.bold,
                       ),
                       ),
@@ -65,25 +63,12 @@ class signup extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.only(top: screenHeight*0.2),
-                  child: Text("Sign Up Farm'O", style: TextStyle(
+                  child: Text("Login Farm'O Owner", style: TextStyle(
                   fontFamily: "Mohave",
-                  fontSize: screenWidth*0.09,
+                  fontSize: screenWidth*0.06,
                   fontWeight: FontWeight.w800,
                   color: Colors.white,
                 ),),
-                ),
-                RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight, 
-                hinText: "First Name", 
-                icon: Icons.person_add, 
-                ),
-                RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight, 
-                hinText: "Last Name", 
-                icon: Icons.person_add, 
-                ),
-                RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight,
-                hinText: "Phone Number",
-                icon: Icons.phone_android,
-                
                 ),
                 RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight,
                 hinText: 'Your Email',
@@ -92,15 +77,25 @@ class signup extends StatelessWidget {
                 RoundedPasswordField(screenWidth: screenWidth, screenHeight: screenHeight, 
                  
                 hinText: 'Password',),
-                RoundedPasswordField(screenWidth: screenWidth, screenHeight: screenHeight, 
-                hinText: "Confirm Password", 
-                ),
                 Container(
-                padding: EdgeInsets.only(top: screenHeight*0.1, bottom: screenHeight*0.15),
+                padding: EdgeInsets.only(top: screenHeight*0.1),
                 child: ElevatedButton(
-                    onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder:(context){return homepage_k();},),);},
-                    child: Text("Sign Up", 
+                    onPressed: () {
+                      showDialog(context: context, builder: (context) => SimpleDialog(
+                        title: Text("Berhasil Login"),
+                        children: [
+                          Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.green.shade300,
+                  ),
+                  margin: EdgeInsets.only(top: 30),
+                  child: TextButton(onPressed: () {Navigator.push(context,
+                    MaterialPageRoute(builder:(context){return homepage_p();},),);}, child: Text("Login", style: TextStyle(fontSize: 20, color: Colors.white))))
+                        ],
+                      ));},
+                    child: Text("Login", 
                     style: TextStyle(
                       fontFamily: "Miriam Libre",
                       fontSize: screenWidth*0.03,
@@ -127,10 +122,8 @@ class signup extends StatelessWidget {
               ],
             )
           ],
-        ),
-        ),
-      ),
-      
+        ),        
+      ), 
     );
   }
 }

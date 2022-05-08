@@ -1,3 +1,5 @@
+import 'package:farm_o/karyawan/Features/penjadwalan/show_data_asupan_vitamin.dart';
+import 'package:farm_o/karyawan/Features/penjadwalan/show_data_pakan.dart';
 import 'package:flutter/material.dart';
 
 class penjadwalan_hewan_ternak extends StatelessWidget {
@@ -59,7 +61,8 @@ style: TextStyle(
                                 borderRadius: BorderRadius.circular(40),
                               ),
                               padding: EdgeInsets.all(screenWidth/110),
-                              child: TextButton(onPressed: () {}, child: Image.asset("assets/animal2.png", width: screenWidth*0.05,),),
+                              child: TextButton(onPressed: () {Navigator.push(context,
+                    MaterialPageRoute(builder:(context){return show_data_pakan();},),);}, child: Image.asset("assets/animal2.png", width: screenWidth*0.05,),),
                             ),
                             Text("Penjadwalan Pakan", style: TextStyle(
                               fontFamily: "Miriam Libre",
@@ -80,7 +83,8 @@ style: TextStyle(
                                 borderRadius: BorderRadius.circular(40),
                               ),
                               padding: EdgeInsets.all(screenWidth/110),
-                              child: TextButton(onPressed: () {}, child: Image.asset("assets/animal1.png", width: screenWidth*0.05,),),
+                              child: TextButton(onPressed: () {Navigator.push(context,
+                    MaterialPageRoute(builder:(context){return show_data_asupan_vitamin();},),);}, child: Image.asset("assets/animal1.png", width: screenWidth*0.05,),),
                             ),
                             Text("Penjadwalan Asupan Vitamin", style: TextStyle(
                               fontFamily: "Miriam Libre",
@@ -103,7 +107,7 @@ style: TextStyle(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(color: Colors.white, width: 2),
-                   image: DecorationImage(image: AssetImage("assets/2.jpg"),
+                   image: DecorationImage(image: AssetImage("assets/3.jpg"),
                     fit: BoxFit.cover)
                 ),
               )

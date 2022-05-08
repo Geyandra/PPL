@@ -1,54 +1,28 @@
 class Data {
-  int ID;
+  String ID;
   String JenisTernak;
-  String HariPakan;
+  String NamaPakanTambahan;
   String TanggalPakan;
   String Status;
 
   Data({
     required this.ID,
     required this.JenisTernak, 
-    required this.HariPakan,
+    required this.NamaPakanTambahan,
     required this.TanggalPakan,
-    required this.Status}); 
-
-  static List<Data> getData() {
-    return <Data>[
-      Data(
-        ID: 1,
-        JenisTernak: "Anakan",
-        HariPakan: "Rabu",
-        TanggalPakan: "08-02-2022",
-        Status: "Sudah diberi pakan"
-      ),
-      Data(
-        ID: 2,
-        JenisTernak: "Indukan",
-        HariPakan: "Senin",
-        TanggalPakan: "09-02-2022",
-        Status: "Belum diberi pakan"
-      ),
-      Data(
-        ID: 3,
-        JenisTernak: "Anakan",
-        HariPakan: "Sabtu",
-        TanggalPakan: "18-02-2022",
-        Status: "Sudah diberi pakan"
-      ),
-      Data(
-        ID: 4,
-        JenisTernak: "Pejantan",
-        HariPakan: "Kamis",
-        TanggalPakan: "28-02-2022",
-        Status: "Belum diberi pakan"
-      ),
-      Data(
-        ID: 5,
-        JenisTernak: "Pejantan",
-        HariPakan: "Rabu",
-        TanggalPakan: "10-03-2022",
-        Status: "Belum diberi pakan"
-      ),
-    ];
-  }
+    required this.Status});
+    Map <String, dynamic> toJson() => {
+    "ID" : ID,
+    "JenisTernak" : JenisTernak,
+    "NamaPakanTambahan" : NamaPakanTambahan,
+    "TanggalPakan" : TanggalPakan,
+    "Status" : Status,
+};
+  static Data fromJson(Map <dynamic, dynamic> json) => Data (
+    ID: json['ID'],
+    JenisTernak: json['JenisTernak'],
+    NamaPakanTambahan: json['NamaPakanTambahan'],
+    TanggalPakan: json['TanggalPakan'],
+    Status: json['Status'],
+  ); 
 }

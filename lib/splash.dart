@@ -1,8 +1,6 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:farm_o/SignUp.dart';
-import 'package:farm_o/login.dart';
-import 'package:farm_o/login_E.dart';
+import 'package:farm_o/karyawan/login_E.dart';
+import 'package:farm_o/karyawan/signup.dart';
+import 'package:farm_o/pemilik/login.dart';
 import 'package:flutter/material.dart';
 
 class splash extends StatelessWidget {
@@ -16,7 +14,7 @@ class splash extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            color: Color.fromARGB(255, 149, 207, 151)
+            color: const Color.fromARGB(255, 149, 207, 151)
             // decoration: const BoxDecoration(
             //   image: DecorationImage(
             //     image: AssetImage("assets/3.png"),
@@ -48,7 +46,7 @@ class splash extends StatelessWidget {
                 padding: EdgeInsets.only(top: screenHeight*0.03),
                 child: ElevatedButton(
                     onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder:(context){return login();},),);},
+                    MaterialPageRoute(builder:(context){return const login();},),);},
                     child: Text("Login As Owner", 
                     style: TextStyle(
                       fontFamily: "Miriam Libre",
@@ -67,7 +65,7 @@ class splash extends StatelessWidget {
                       backgroundColor: MaterialStateProperty.resolveWith(
                         (states) => states.any(
                           (element) => element == MaterialState.pressed)?
-                          Colors.greenAccent : Color.fromRGBO(88, 250, 162, 60)
+                          Colors.greenAccent : const Color.fromRGBO(88, 250, 162, 60)
                       ),
                     ),
                     ),
@@ -76,7 +74,7 @@ class splash extends StatelessWidget {
                 padding: EdgeInsets.only(top: screenHeight*0.03),
                 child: ElevatedButton(
                     onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder:(context){return login_E();},),);},
+                    MaterialPageRoute(builder:(context){return const login_E();},),);},
                     child: Text("Login As Employee", 
                     style: TextStyle(
                       fontFamily: "Miriam Libre",
@@ -95,7 +93,7 @@ class splash extends StatelessWidget {
                       backgroundColor: MaterialStateProperty.resolveWith(
                         (states) => states.any(
                           (element) => element == MaterialState.pressed)?
-                          Colors.greenAccent : Color.fromRGBO(88, 250, 162, 60)
+                          Colors.greenAccent : const Color.fromRGBO(88, 250, 162, 60)
                       ),
                     ),
                     ),
@@ -104,7 +102,7 @@ class splash extends StatelessWidget {
                 padding: EdgeInsets.only(top: screenHeight*0.03),
                 child: ElevatedButton(
                     onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder:(context){return signup();},),);},
+                    MaterialPageRoute(builder:(context){return const signup();},),);},
                     child: Text("Sign Up", 
                     style: TextStyle(
                       fontFamily: "Miriam Libre",
@@ -123,7 +121,7 @@ class splash extends StatelessWidget {
                       backgroundColor: MaterialStateProperty.resolveWith(
                         (states) => states.any(
                           (element) => element == MaterialState.pressed)?
-                          Colors.greenAccent : Color.fromRGBO(88, 250, 162, 60)
+                          Colors.greenAccent : const Color.fromRGBO(88, 250, 162, 60)
                       ),
                     ),
                     ),

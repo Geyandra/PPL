@@ -1,3 +1,6 @@
+import 'package:farm_o/karyawan/Features/penjadwalan/penjadwalan_hewan_ternak.dart';
+import 'package:farm_o/karyawan/Features/populasi/show_data_k.dart';
+import 'package:farm_o/profile_k.dart';
 import 'package:flutter/material.dart';
 
 class homepage_k extends StatelessWidget {
@@ -52,7 +55,8 @@ style: TextStyle(
                             borderRadius: BorderRadius.circular(40),
                           ),
                           padding: EdgeInsets.all(screenWidth/110),
-                          child: TextButton(onPressed: () {}, child: Image.asset("assets/list.png", width: screenWidth*0.05,),),
+                          child: TextButton(onPressed: () {Navigator.push(context,
+                    MaterialPageRoute(builder:(context){return penjadwalan_hewan_ternak();},),);}, child: Image.asset("assets/list.png", width: screenWidth*0.05,),),
                         ),
                         Text("Penjadwalan Hewan Ternak", style: TextStyle(
                           fontFamily: "Miriam Libre",
@@ -101,7 +105,8 @@ style: TextStyle(
                             borderRadius: BorderRadius.circular(40),
                           ),
                           padding: EdgeInsets.all(screenWidth/110),
-                          child: TextButton(onPressed: () { }, child: Image.asset("assets/4.png", width: screenWidth*0.05,),),
+                          child: TextButton(onPressed: () {Navigator.push(context,
+                    MaterialPageRoute(builder:(context){return show_data_k();},),);}, child: Image.asset("assets/4.png", width: screenWidth*0.05,),),
                         ),
                         Text("Populasi Hewan Ternak",style: TextStyle(
                           fontFamily: "Miriam Libre",
@@ -118,12 +123,18 @@ style: TextStyle(
               right: screenWidth/100,
               height: screenHeight*0.13,
               width: screenWidth*0.13,
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 2),
-                   image: DecorationImage(image: AssetImage("assets/3.jpg"),
-                    fit: BoxFit.cover)
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                    MaterialPageRoute(builder:(context){return profile_k();},),);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white, width: 2),
+                     image: DecorationImage(image: AssetImage("assets/3.jpg"),
+                      fit: BoxFit.cover)
+                  ),
                 ),
               )
               ),

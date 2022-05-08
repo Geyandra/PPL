@@ -38,6 +38,8 @@ dependencies:
   cloud_firestore: ^3.1.14
   firebase_core: ^1.16.0
   firebase_core_web: ^1.6.3
+  flutter_speed_dial: ^6.0.0
+  firebase_database: ^9.0.13
 
 dev_dependencies:
   flutter_test:
@@ -77,6 +79,9 @@ flutter:
     - assets/fbg4.png
     - assets/animal1.png
     - assets/animal2.png
+    - assets/edit.png
+    - assets/logout.png
+    - assets/setting.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

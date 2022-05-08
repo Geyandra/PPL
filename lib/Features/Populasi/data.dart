@@ -20,43 +20,11 @@ class Data {
     "KesehatanTernak" : KesehatanTernak,
 };
 
-  static List<Data> getData() {
-    return <Data>[
-      Data(
-        ID: "1",
-        JenisTernak: "Anakan",
-        Jumlah: 3,
-        TanggalPendataan: "08-02-2022",
-        KesehatanTernak: "Baik"
-      ),
-      Data(
-        ID: "2",
-        JenisTernak: "Indukan",
-        Jumlah: 3,
-        TanggalPendataan: "09-02-2022",
-        KesehatanTernak: "Baik"
-      ),
-      Data(
-        ID: "3",
-        JenisTernak: "Pejantan",
-        Jumlah: 3,
-        TanggalPendataan: "18-02-2022",
-        KesehatanTernak: "Baik"
-      ),
-      Data(
-        ID: "4",
-        JenisTernak: "Indukan",
-        Jumlah: 3,
-        TanggalPendataan: "28-02-2022",
-        KesehatanTernak: "Baik"
-      ),
-      Data(
-        ID: "5",
-        JenisTernak: "Anakan",
-        Jumlah: 3,
-        TanggalPendataan: "10-03-2022",
-        KesehatanTernak: "Baik"
-      ),
-    ];
-  }
+  static Data fromJson(Map <dynamic, dynamic> json) => Data (
+    ID: json['ID'],
+    JenisTernak: json['JenisTernak'],
+    Jumlah: json['Jumlah'],
+    KesehatanTernak: json['KesehatanTernak'],
+    TanggalPendataan: json['TanggalPendataan'],
+  );
 }

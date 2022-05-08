@@ -1,4 +1,6 @@
-import 'package:farm_o/Features/Populasi/show_data_p.dart';
+import 'package:farm_o/pemilik/Features/penjadwalan/penjadwalan_hewan_ternak.dart';
+import 'package:farm_o/pemilik/Features/populasi/show_data_p.dart';
+import 'package:farm_o/profile.dart';
 import 'package:flutter/material.dart';
 
 class homepage_p extends StatelessWidget {
@@ -53,7 +55,8 @@ style: TextStyle(
                             borderRadius: BorderRadius.circular(40),
                           ),
                           padding: EdgeInsets.all(screenWidth/110),
-                          child: TextButton(onPressed: () {}, child: Image.asset("assets/list.png", width: screenWidth*0.05,),),
+                          child: TextButton(onPressed: () {Navigator.push(context,
+                    MaterialPageRoute(builder:(context){return penjadwalan_hewan_ternak();},),);}, child: Image.asset("assets/list.png", width: screenWidth*0.05,),),
                         ),
                         Text("Penjadwalan Hewan Ternak", style: TextStyle(
                           fontFamily: "Miriam Libre",
@@ -86,22 +89,6 @@ style: TextStyle(
                             borderRadius: BorderRadius.circular(40),
                           ),
                           padding: EdgeInsets.all(screenWidth/110),
-                          child: TextButton(onPressed: () {}, child: Image.asset("assets/drugs.png", width: screenWidth*0.05,),)
-                        ),
-                        Text("Prediksi Kualitas & Kuantitas",style: TextStyle(
-                          fontFamily: "Miriam Libre",
-                          fontSize: screenWidth*0.012,
-                          fontWeight: FontWeight.bold,
-                      
-                        ),),
-                        Container(
-                          width: screenWidth*0.12,
-                          decoration: BoxDecoration(
-                            color: Color.fromRGBO(26, 236, 211, 0.3),
-                            border: Border.all(color: Colors.black, width: 1),
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                          padding: EdgeInsets.all(screenWidth/110),
                           child: TextButton(onPressed: () {}, child: Image.asset("assets/cart.png", width: screenWidth*0.05,),)
                         ),
                         Text("Recording Penjualan",style: TextStyle(
@@ -119,7 +106,7 @@ style: TextStyle(
                           ),
                           padding: EdgeInsets.all(screenWidth/110),
                           child: TextButton(onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder:(context){return show_data();},),);}, child: Image.asset("assets/4.png", width: screenWidth*0.05,),),
+                    MaterialPageRoute(builder:(context){return show_data_p();},),);}, child: Image.asset("assets/4.png", width: screenWidth*0.05,),),
                         ),
                         Text("Populasi Hewan Ternak",style: TextStyle(
                           fontFamily: "Miriam Libre",
@@ -138,7 +125,8 @@ style: TextStyle(
               width: screenWidth*0.13,
               child: InkWell(
                 onTap: () {
-                  
+                  Navigator.push(context,
+                    MaterialPageRoute(builder:(context){return profile();},),);
                 },
                 child: Container(
                   decoration: BoxDecoration(
