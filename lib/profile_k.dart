@@ -1,8 +1,9 @@
 import 'package:farm_o/components/components.dart';
+import 'package:farm_o/karyawan/akun_k.dart';
 import 'package:farm_o/pemilik/Features/penjadwalan/penjadwalan_hewan_ternak.dart';
-import 'package:farm_o/pemilik/Features/populasi/show_data_p.dart';
 import 'package:farm_o/splash.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class profile_k extends StatelessWidget {
   const profile_k({ Key? key }) : super(key: key);
@@ -59,42 +60,10 @@ style: TextStyle(
                             borderRadius: BorderRadius.circular(40),
                           ),
                           padding: EdgeInsets.all(screenWidth/110),
-                          child: TextButton(onPressed: () {showDialog(context: context, builder: (context) => SimpleDialog(
-                            
-          title: Text("Ubah Data Akun"),
-          backgroundColor: Colors.green,
-          contentPadding: EdgeInsets.all(screenWidth*0.05),
-          children: [
-            RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight, hinText: "First Name", icon: Icons.person_add),
-            RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight, hinText: "Last Name", icon: Icons.person_add),
-            RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight, hinText: "Phone Number", icon: Icons.phone_android),
-            RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight, hinText: "E-mail", icon: Icons.mail_outline_sharp),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.green.shade50,
-                    borderRadius: BorderRadius.circular(30)
-                  ),
-                  margin: EdgeInsets.only(top: 30),
-                  child: TextButton(onPressed: () {
-                    Navigator.of(context).pop();}, child: Text("Simpan", style: TextStyle(fontSize: 20, color: Colors.black)))),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Colors.green.shade800,
-                  ),
-                  margin: EdgeInsets.only(top: 30),
-                  child: TextButton(onPressed: () {Navigator.of(context).pop();}, child: Text("Batalkan", style: TextStyle(fontSize: 20, color: Colors.white))))
-              ],
-            ),
-          ],
-                          ));}, child: Image.asset("assets/edit.png", width: screenWidth*0.05,),),
+                          child: TextButton(onPressed: () {Navigator.push(context,
+                    MaterialPageRoute(builder:(context){return const dataAkun_k();},),);}, child: Image.asset("assets/edit.png", width: screenWidth*0.05,),),
                         ),
-                        Text("Mengubah Data", style: TextStyle(
+                        Text("Data Akun", style: TextStyle(
                           fontFamily: "Miriam Libre",
                           fontSize: screenWidth*0.012,
                           fontWeight: FontWeight.bold,
@@ -138,7 +107,9 @@ style: TextStyle(
                     borderRadius: BorderRadius.circular(30)
                   ),
                   margin: EdgeInsets.only(top: 30),
-                  child: TextButton(onPressed: () {Navigator.push(context,
+                  child: TextButton(onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                    Navigator.push(context,
                     MaterialPageRoute(builder:(context){return splash();},),);}, child: Text("Log Out", style: TextStyle(fontSize: 20, color: Colors.black)))),
                 Container(
                   padding: EdgeInsets.all(10),
@@ -167,34 +138,6 @@ style: TextStyle(
               right: screenWidth/100,
               height: screenHeight*0.13,
               width: screenWidth*0.13,
-              child: InkWell(
-                onTap: () {
-                  showDialog(context: context, builder: (context)=> SimpleDialog(
-                    title: Text("Akun"),
-                    children: [
-                      Column(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            child: Text("First Name :  Geyandra"),
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            child: Text("Last Name :  Kyanaka"),
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            child: Text("Phone Number :   081xxxxxxxx7"),
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            child: Text("E-mail :   example.12@example.com"),
-                          ),
-                        ],
-                      )
-                    ],
-                  ));
-                },
                 child: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -203,7 +146,6 @@ style: TextStyle(
                       fit: BoxFit.cover)
                   ),
                 ),
-              )
               ),
           ],
         ),

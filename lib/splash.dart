@@ -1,5 +1,5 @@
-import 'package:farm_o/karyawan/login_E.dart';
-import 'package:farm_o/karyawan/signup.dart';
+import 'package:farm_o/karyawan/login_k.dart';
+import 'package:farm_o/karyawan/signup_k.dart';
 import 'package:farm_o/pemilik/login.dart';
 import 'package:flutter/material.dart';
 
@@ -15,12 +15,6 @@ class splash extends StatelessWidget {
         children: [
           Container(
             color: const Color.fromARGB(255, 149, 207, 151)
-            // decoration: const BoxDecoration(
-            //   image: DecorationImage(
-            //     image: AssetImage("assets/3.png"),
-            //     fit: BoxFit.fill
-            //     ),
-            //     ),
           ),
           Positioned(
             top: screenHeight*0.038,
@@ -46,7 +40,7 @@ class splash extends StatelessWidget {
                 padding: EdgeInsets.only(top: screenHeight*0.03),
                 child: ElevatedButton(
                     onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder:(context){return const login();},),);},
+                    MaterialPageRoute(builder:(context){return const login_pemilik();},),);},
                     child: Text("Login As Owner", 
                     style: TextStyle(
                       fontFamily: "Miriam Libre",
@@ -74,7 +68,7 @@ class splash extends StatelessWidget {
                 padding: EdgeInsets.only(top: screenHeight*0.03),
                 child: ElevatedButton(
                     onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder:(context){return const login_E();},),);},
+                    MaterialPageRoute(builder:(context){return const login_k();},),);},
                     child: Text("Login As Employee", 
                     style: TextStyle(
                       fontFamily: "Miriam Libre",
@@ -102,7 +96,7 @@ class splash extends StatelessWidget {
                 padding: EdgeInsets.only(top: screenHeight*0.03),
                 child: ElevatedButton(
                     onPressed: () {Navigator.push(context,
-                    MaterialPageRoute(builder:(context){return const signup();},),);},
+                    MaterialPageRoute(builder:(context){return const signup_k();},),);},
                     child: Text("Sign Up", 
                     style: TextStyle(
                       fontFamily: "Miriam Libre",

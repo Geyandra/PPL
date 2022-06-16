@@ -1,19 +1,20 @@
 import 'dart:ui';
-import 'package:farm_o/pemilik/homepage_p(alt).dart';
-import 'package:farm_o/pemilik/signup.dart';
+import 'package:farm_o/karyawan/acc_k.dart';
+import 'package:farm_o/karyawan/homepage_k(alt).dart';
+import 'package:farm_o/karyawan/signup_k.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../components/components.dart';
 import 'package:flutter/material.dart';
 
-class login_pemilik extends StatefulWidget {
-  const login_pemilik({ Key? key }) : super(key: key);
+class login_k extends StatefulWidget {
+  const login_k({ Key? key }) : super(key: key);
 
   @override
-  State<login_pemilik> createState() => _login_pemilikState();
+  State<login_k> createState() => _login_kState();
 }
 
-class _login_pemilikState extends State<login_pemilik> {
+class _login_kState extends State<login_k> {
   final formKey = GlobalKey<FormState>();
   final controlEmail = TextEditingController();
   final controlPassword = TextEditingController();
@@ -57,7 +58,7 @@ class _login_pemilikState extends State<login_pemilik> {
                     )),
                     child: ElevatedButton(
                       onPressed: () {Navigator.push(context,
-                      MaterialPageRoute(builder:(context){return signup_pemilik();},),);},
+                      MaterialPageRoute(builder:(context){return signup_k();},),);},
                       child: Text("Sign Up", 
                       style: TextStyle(
                         fontFamily: "Miriam Libre",
@@ -83,7 +84,7 @@ class _login_pemilikState extends State<login_pemilik> {
                   ),
                   Container(
                     padding: EdgeInsets.only(top: screenHeight*0.2),
-                    child: Text("Login Farm'O Owner", style: TextStyle(
+                    child: Text("Login Farm'O Employee", style: TextStyle(
                     fontFamily: "Mohave",
                     fontSize: screenWidth*0.06,
                     fontWeight: FontWeight.w800,
@@ -153,7 +154,7 @@ class _login_pemilikState extends State<login_pemilik> {
         .then((uid) => {
           Fluttertoast.showToast(msg: "Login Berhasil"),
           Navigator.push(context,
-  MaterialPageRoute(builder:(context){return homepage_p();},),),
+  MaterialPageRoute(builder:(context){return homepage_k();},),),
         });
       } on FirebaseAuthException catch(e){
         print(e);

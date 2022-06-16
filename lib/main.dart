@@ -1,11 +1,10 @@
-import 'package:farm_o/karyawan/signup.dart';
-import 'package:farm_o/profile.dart';
+import 'package:farm_o/pemilik/Features/penjadwalan/show_data_asupan_vitamin.dart';
 import 'package:farm_o/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
-Future <void> main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

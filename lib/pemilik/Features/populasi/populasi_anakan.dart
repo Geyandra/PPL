@@ -6,14 +6,14 @@ import '../../../Features/Populasi/data.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:farm_o/components/components.dart';
 
-class show_data_p extends StatefulWidget {
-  const show_data_p({ Key? key }) : super(key: key);
+class populasi_anakan extends StatefulWidget {
+  const populasi_anakan({ Key? key }) : super(key: key);
 
   @override
-  State<show_data_p> createState() => _show_data_pState();
+  State<populasi_anakan> createState() => _populasi_anakanState();
 }
 
-class _show_data_pState extends State<show_data_p> {
+class _populasi_anakanState extends State<populasi_anakan> {
   final controlID = TextEditingController();
   final controlJenisTernak = TextEditingController();
   final controlJumlah = TextEditingController();
@@ -56,44 +56,38 @@ Widget buildData(Data data) => Column(
   mainAxisAlignment: MainAxisAlignment.end,
   children: [
     Card(
-      margin: EdgeInsets.symmetric(horizontal: 641, vertical: 20),
+      margin: EdgeInsets.symmetric(horizontal: 590, vertical: 20),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       color: Color.fromARGB(255, 255, 255, 255),
       child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
-            InkWellCard(
-              texttgl: 'Tanggal : '+data.TanggalPendataan,
-              text: 'ID : ' + data.ID,
-              dialog: SimpleDialog(children: [
-                Container(
-              margin: EdgeInsets.all(10),
-              child: Text("Jenis Ternak : "+data.JenisTernak),
-            ),
             Container(
-              margin: EdgeInsets.all(10),
-              child: Text("Jumlah : "+ '${data.Jumlah}'),
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: Text("Tanggal Pendataan : "+data.TanggalPendataan),
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: Text("Kesehatan Ternak : "+data.KesehatanTernak),
-            ),
-            ButtonOnDialog(
-              title: 'Done',
-              insertpadding: EdgeInsets.all(10),
-              insertmargin: EdgeInsets.only(top: 10),
-              color: Colors.white,
-              colortext: Colors.black,
-              sizetext: 14,
+            child: Image.asset("assets/fbg3.png", width: 80,),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                // color: Colors.blue,
+                padding: EdgeInsets.fromLTRB(33, 10, 10, 0),
+                // margin: EdgeInsets.all(10),
+                child: Text("Tanggal Pendataan: "+data.TanggalPendataan),
               ),
-              ],
+              Container(
+                padding: EdgeInsets.fromLTRB(33, 0, 10, 0),
+                child: Text("Jenis Ternak: "+data.JenisTernak),
               ),
+              Container(
+                padding: EdgeInsets.fromLTRB(33, 0, 10, 0),
+                child: Text("Jumlah Ternak: "+'${data.Jumlah}'),
               ),
+              Container(
+                padding: EdgeInsets.fromLTRB(33, 0, 10, 10),
+                child: Text("Status: "+data.KesehatanTernak),
+              ),
+            ],
+          ),
         ],
         ),
       )
@@ -101,18 +95,6 @@ Widget buildData(Data data) => Column(
 );
 
 
-Stream<List<Data>> readData() => FirebaseFirestore.instance.collection("populasi_hewan_ternak")
+Stream<List<Data>> readData() => FirebaseFirestore.instance.collection("populasi_hewan_ternak").where('JenisTernak', isEqualTo: "Anakan")
 .snapshots().map((snapshots)=> 
 snapshots.docs.map((doc) => Data.fromJson(doc.data())).toList());
-
-// Future createData (Data data) async {
-//   final docData = FirebaseFirestore.instance.collection("populasi_hewan_ternak").doc(data.ID);
-//   data.ID = docData.id;
-//   final json = data.toJson();
-//   docData.set(json);}
-
-// Future updateData (Data data) async {
-//   final docData = FirebaseFirestore.instance.collection("populasi_hewan_ternak").doc(data.ID);
-//   data.ID = docData.id;
-//   final json = data.toJson();
-//   docData.update(json);}

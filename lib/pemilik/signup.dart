@@ -1,30 +1,31 @@
-import 'dart:ui';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farm_o/karyawan/homepage_k(alt).dart';
+import 'package:farm_o/pemilik/acc_k.dart';
 import 'package:farm_o/pemilik/homepage_p(alt).dart';
-import 'package:farm_o/pemilik/signup.dart';
+import 'package:farm_o/pemilik/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../components/components.dart';
-import 'package:flutter/material.dart';
 
-class login_pemilik extends StatefulWidget {
-  const login_pemilik({ Key? key }) : super(key: key);
+
+class signup_pemilik extends StatefulWidget {
+  const signup_pemilik({ Key? key }) : super(key: key);
 
   @override
-  State<login_pemilik> createState() => _login_pemilikState();
+  State<signup_pemilik> createState() => _signup_pemilikState();
+  
 }
 
-class _login_pemilikState extends State<login_pemilik> {
+class _signup_pemilikState extends State<signup_pemilik> {
   final formKey = GlobalKey<FormState>();
+  final controlFirstName = TextEditingController();
+  final controlLastName = TextEditingController();
+  final controlPhoneNumber = TextEditingController();
   final controlEmail = TextEditingController();
   final controlPassword = TextEditingController();
-
-  @override
-  void dispose() {
-    controlEmail.dispose();
-    controlPassword.dispose();
-
-    super.dispose();
-  }  
+  final controlconfirmPassword = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final double screenHeight=MediaQuery.of(context).size.height;
@@ -32,7 +33,8 @@ class _login_pemilikState extends State<login_pemilik> {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: const Color.fromARGB(255, 149, 207, 151),
-        body: Stack(
+        body: SingleChildScrollView(
+          child: Stack(
           alignment: Alignment.center,
           children: <Widget>[
             Positioned(
@@ -57,8 +59,8 @@ class _login_pemilikState extends State<login_pemilik> {
                     )),
                     child: ElevatedButton(
                       onPressed: () {Navigator.push(context,
-                      MaterialPageRoute(builder:(context){return signup_pemilik();},),);},
-                      child: Text("Sign Up", 
+                      MaterialPageRoute(builder:(context){return login_pemilik();},),);},
+                      child: Text("Login", 
                       style: TextStyle(
                         fontFamily: "Miriam Libre",
                         fontSize: screenWidth*0.01,
@@ -83,39 +85,84 @@ class _login_pemilikState extends State<login_pemilik> {
                   ),
                   Container(
                     padding: EdgeInsets.only(top: screenHeight*0.2),
-                    child: Text("Login Farm'O Owner", style: TextStyle(
+                    child: Text("Sign Up Farm'O", style: TextStyle(
                     fontFamily: "Mohave",
-                    fontSize: screenWidth*0.06,
+                    fontSize: screenWidth*0.09,
                     fontWeight: FontWeight.w800,
                     color: Colors.white,
                   ),),
+                  ),
+                  RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight, 
+                  hinText: "First Name", 
+                  icon: Icons.person_add,
+                  control: controlFirstName, 
+                  validatorvalue: (value) {
+                    if (value!.isEmpty) {
+                      return ("Data tidak boleh kosong");
+                    }
+                    return null;
+                  }
+                  ),
+                  RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight, 
+                  hinText: "Last Name", 
+                  icon: Icons.person_add,
+                  control: controlLastName,
+                  validatorvalue: (value) {
+                    if (value!.isEmpty) {
+                      return ("Data tidak boleh kosong");
+                    }
+                    return null;
+                  } 
+                  ),
+                  RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight,
+                  hinText: "Phone Number",
+                  icon: Icons.phone_android,
+                  control: controlPhoneNumber,
+                  validatorvalue: (value) {
+                    if (value!.isEmpty) {
+                      return ("Data tidak boleh kosong");
+                    }
+                    return null;
+                  }
                   ),
                   RoundedInputField(screenWidth: screenWidth, screenHeight: screenHeight,
                   hinText: 'Your Email',
                   icon: Icons.mail_outline_sharp,
                   control: controlEmail,
-                  validatorvalue: (value){
+                  validatorvalue: (value) {
                     if (value!.isEmpty) {
                       return ("Data tidak boleh kosong");
                     }
                     return null;
-                  },
+                  }
                   ),
                   RoundedPasswordField(screenWidth: screenWidth, screenHeight: screenHeight, 
-                  hinText: 'Password',
                   control: controlPassword,
-                  validatorvalue: (value){
+                  validatorvalue: (value) {
                     if (value!.isEmpty) {
                       return ("Data tidak boleh kosong");
                     }
                     return null;
                   },
+                  hinText: 'Password',),
+                  RoundedPasswordField(screenWidth: screenWidth, screenHeight: screenHeight, 
+                  hinText: "Confirm Password",
+                  control: controlconfirmPassword,
+                  validatorvalue: (value){
+                    if (value!.isEmpty) {
+                      return ("Data tidak boleh kosong");
+                    }
+                    if (controlconfirmPassword.text != controlPassword.text) {
+                      return "Password Berbeda";
+                    }
+                    return null;
+                  }, 
                   ),
                   Container(
-                  padding: EdgeInsets.only(top: screenHeight*0.1),
+                  padding: EdgeInsets.only(top: screenHeight*0.1, bottom: screenHeight*0.15),
                   child: ElevatedButton(
-                      onPressed:LOGIN,
-                      child: Text("Login", 
+                      onPressed: signUp,
+                      child: Text("Sign Up", 
                       style: TextStyle(
                         fontFamily: "Miriam Libre",
                         fontSize: screenWidth*0.03,
@@ -140,25 +187,38 @@ class _login_pemilikState extends State<login_pemilik> {
                 ),
                 ],
               ),
-            )
+            ),
           ],
-        ),        
-      ), 
+        ),
+        ),
+      ),
+      
     );
   }
-  void LOGIN() async{
+  void signUp() async{
     if (formKey.currentState!.validate()) {
-      try {
-        await FirebaseAuth.instance.signInWithEmailAndPassword(email: controlEmail.text, password: controlPassword.text)
+      try{
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(email: controlEmail.text.trim(), password: controlPassword.text.trim())
         .then((uid) => {
-          Fluttertoast.showToast(msg: "Login Berhasil"),
+          Fluttertoast.showToast(msg: "Data Berhasil dibuat"),
           Navigator.push(context,
   MaterialPageRoute(builder:(context){return homepage_p();},),),
         });
-      } on FirebaseAuthException catch(e){
+      }on FirebaseAuthException catch(e) {
         print(e);
       }
+      final data = Data(
+        FirstName: controlFirstName.text, 
+        LastName: controlLastName.text, 
+        PhoneNumber: int.parse(controlPhoneNumber.text), 
+        Email: controlEmail.text);
+        createData(data);
     }
   }
-}
 
+}
+Future createData (Data data) async {
+  final docData = FirebaseFirestore.instance.collection("Akun_Pemilik").doc();
+  data.ID = docData.id;
+  final json = data.toJson();
+  docData.set(json);}

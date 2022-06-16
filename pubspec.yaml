@@ -29,7 +29,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  syncfusion_flutter_datagrid: ^19.1.58-beta  
+  # syncfusion_flutter_datagrid: ^19.1.58-beta  
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -39,7 +39,10 @@ dependencies:
   firebase_core: ^1.16.0
   firebase_core_web: ^1.6.3
   flutter_speed_dial: ^6.0.0
+  firebase_auth: ^3.3.17
   firebase_database: ^9.0.13
+  fluttertoast: ^8.0.9
+  fl_chart: ^0.51.0
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +73,8 @@ flutter:
     - assets/bottle.png
     - assets/cart.png
     - assets/drugs.png
+    - assets/farmer.png
+    - assets/employees.png
     - assets/list.png
     - assets/3.jpg
     - assets/fbg2.jpg
@@ -77,11 +82,21 @@ flutter:
     - assets/fbg2.png
     - assets/fbg3.png
     - assets/fbg4.png
+    - assets/fbg5.png
     - assets/animal1.png
     - assets/animal2.png
     - assets/edit.png
     - assets/logout.png
     - assets/setting.png
+    - assets/sheep.png
+    - assets/sheep (1).png
+    - assets/milk.png
+    - assets/fertilizer.png
+    - assets/fertilizer (1).png
+    - assets/fertilizer (2).png
+    - assets/milk (1).png
+    - assets/milk (2).png
+    - assets/sheep (2).png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

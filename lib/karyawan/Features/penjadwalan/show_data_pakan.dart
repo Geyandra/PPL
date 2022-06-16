@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:farm_o/components/components.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -57,44 +56,38 @@ Widget buildData(Data data) => Column(
   mainAxisAlignment: MainAxisAlignment.end,
   children: [
     Card(
-      margin: EdgeInsets.symmetric(horizontal: 641, vertical: 20),
+      margin: EdgeInsets.symmetric(horizontal: 580, vertical: 40),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       color: Color.fromARGB(255, 255, 255, 255),
       child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
-            InkWellCard(
-              texttgl: 'Tanggal : '+data.TanggalPakan,
-              text: 'ID : ' + data.ID,
-              dialog: SimpleDialog(children: [
-                Container(
-              margin: EdgeInsets.all(10),
-              child: Text("Jenis Ternak : "+data.JenisTernak),
-            ),
             Container(
-              margin: EdgeInsets.all(10),
-              child: Text("NamaPakanTambahan : "+ '${data.NamaPakanTambahan}'),
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: Text("Tanggal Pendataan : "+data.TanggalPakan),
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: Text("Kesehatan Ternak : "+data.Status),
-            ),
-            ButtonOnDialog(
-              title: 'Done',
-              insertpadding: EdgeInsets.all(10),
-              insertmargin: EdgeInsets.only(top: 10),
-              color: Colors.white,
-              colortext: Colors.black,
-              sizetext: 14,
+            child: Image.asset("assets/fbg3.png", width: 80,),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                // color: Colors.blue,
+                padding: EdgeInsets.fromLTRB(33, 10, 10, 0),
+                // margin: EdgeInsets.all(10),
+                child: Text("Tanggal Pakan: "+data.TanggalPakan),
               ),
-              ],
+              Container(
+                padding: EdgeInsets.fromLTRB(33, 0, 10, 0),
+                child: Text("Nama Pakan Tambahan: "+data.NamaPakanTambahan),
               ),
+              Container(
+                padding: EdgeInsets.fromLTRB(33, 0, 10, 0),
+                child: Text("Jenis Ternak: "+data.JenisTernak),
               ),
+              Container(
+                padding: EdgeInsets.fromLTRB(33, 0, 10, 10),
+                child: Text("Status: "+data.Status),
+              ),
+            ],
+          ),
         ],
         ),
       )

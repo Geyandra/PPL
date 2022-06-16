@@ -1,23 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:farm_o/components/components.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../../Features/Penjadwalan/dataasupanvitamin.dart';
+import 'package:farm_o/Features/recording/data_penjualan.dart';
+import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:farm_o/components/components.dart';
 
-class show_data_asupan_vitamin extends StatefulWidget {
-  const show_data_asupan_vitamin({ Key? key }) : super(key: key);
+
+class pupuk_mentah extends StatefulWidget {
+  const pupuk_mentah({ Key? key }) : super(key: key);
 
   @override
-  State<show_data_asupan_vitamin> createState() => _show_data_asupan_vitaminState();
+  State<pupuk_mentah> createState() => _pupuk_mentahState();
 }
 
-class _show_data_asupan_vitaminState extends State<show_data_asupan_vitamin> {
+class _pupuk_mentahState extends State<pupuk_mentah> {
   final controlID = TextEditingController();
-  final controlJenisTernak = TextEditingController();
-  final controlNamaVitamin = TextEditingController();
-  final controlTanggalAsupanVitamin = TextEditingController();
-  final controlStatus = TextEditingController();
+  final controlJumlah = TextEditingController();
+  final controlTanggalPenjualan= TextEditingController();
+  final controlJenisProduk= TextEditingController();
+  final controlTotalPembayaran= TextEditingController();
+  final controlMediaPembayaran= TextEditingController();
 
   @override
   Widget build(BuildContext context ) {
@@ -26,7 +27,7 @@ class _show_data_asupan_vitaminState extends State<show_data_asupan_vitamin> {
     return Scaffold(
       backgroundColor: Colors.greenAccent.shade100,
       appBar: AppBar(
-        title: Text("Data Asupan Vitamin Hewan Ternak"),
+        title: Text("Recording Penjualan"),
       ),
       body: SingleChildScrollView(
         child: StreamBuilder<List<Data>>(
@@ -62,7 +63,7 @@ Widget buildData(Data data) => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-            child: Image.asset("assets/fbg3.png", width: 80,),
+            child: Image.asset("assets/fertilizer (1).png", width: 80,),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,19 +72,23 @@ Widget buildData(Data data) => Column(
                 // color: Colors.blue,
                 padding: EdgeInsets.fromLTRB(33, 10, 10, 0),
                 // margin: EdgeInsets.all(10),
-                child: Text("Tanggal Asupan Vitamin: "+data.TanggalAsupanVitamin),
+                child: Text("Tanggal Penjualan: "+data.TanggalPenjualan),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(33, 0, 10, 0),
-                child: Text("Nama Vitamin: "+data.NamaVitamin),
+                child: Text("Jenis Produk: "+data.JenisProduk),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(33, 0, 10, 0),
-                child: Text("Jenis Ternak: "+data.JenisTernak),
+                child: Text("Jumlah Produk: "+'${data.Jumlah}'),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(33, 0, 10, 10),
-                child: Text("Status: "+data.Status),
+                padding: EdgeInsets.fromLTRB(33, 0, 10, 0),
+                child: Text("Total Pembayaran: "+'${data.TotalPembayaran}'),
+              ),
+              Container(
+                padding: EdgeInsets.fromLTRB(33, 0, 10, 0),
+                child: Text("Media Pembayaran: "+data.MediaPembayaran),
               ),
             ],
           ),
@@ -92,8 +97,6 @@ Widget buildData(Data data) => Column(
       )
   ],
 );
-
-
-Stream<List<Data>> readData() => FirebaseFirestore.instance.collection("data_asupan_vitamin_hewan_ternak")
+Stream<List<Data>> readData() => FirebaseFirestore.instance.collection("recording_penjualan").where('JenisProduk', isEqualTo: "Pupuk Mentah")
 .snapshots().map((snapshots)=> 
 snapshots.docs.map((doc) => Data.fromJson(doc.data())).toList());

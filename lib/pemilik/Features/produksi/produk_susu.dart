@@ -1,23 +1,22 @@
-import 'package:flutter/material.dart';
-import 'package:farm_o/components/components.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../../Features/Penjadwalan/dataasupanvitamin.dart';
+import 'package:farm_o/Features/produksi/data_produksi.dart';
+import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:farm_o/components/components.dart';
 
-class show_data_asupan_vitamin extends StatefulWidget {
-  const show_data_asupan_vitamin({ Key? key }) : super(key: key);
+
+class produk_susu extends StatefulWidget {
+  const produk_susu({ Key? key }) : super(key: key);
 
   @override
-  State<show_data_asupan_vitamin> createState() => _show_data_asupan_vitaminState();
+  State<produk_susu> createState() => _produk_susuState();
 }
 
-class _show_data_asupan_vitaminState extends State<show_data_asupan_vitamin> {
+class _produk_susuState extends State<produk_susu> {
   final controlID = TextEditingController();
-  final controlJenisTernak = TextEditingController();
-  final controlNamaVitamin = TextEditingController();
-  final controlTanggalAsupanVitamin = TextEditingController();
-  final controlStatus = TextEditingController();
+  final controlJumlah = TextEditingController();
+  final controlTanggalProduksi= TextEditingController();
+  final controlJenisProduk= TextEditingController();
 
   @override
   Widget build(BuildContext context ) {
@@ -26,7 +25,7 @@ class _show_data_asupan_vitaminState extends State<show_data_asupan_vitamin> {
     return Scaffold(
       backgroundColor: Colors.greenAccent.shade100,
       appBar: AppBar(
-        title: Text("Data Asupan Vitamin Hewan Ternak"),
+        title: Text("Produksi Peternakan"),
       ),
       body: SingleChildScrollView(
         child: StreamBuilder<List<Data>>(
@@ -62,7 +61,7 @@ Widget buildData(Data data) => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-            child: Image.asset("assets/fbg3.png", width: 80,),
+            child: Image.asset("assets/milk (1).png", width: 80,),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,19 +70,15 @@ Widget buildData(Data data) => Column(
                 // color: Colors.blue,
                 padding: EdgeInsets.fromLTRB(33, 10, 10, 0),
                 // margin: EdgeInsets.all(10),
-                child: Text("Tanggal Asupan Vitamin: "+data.TanggalAsupanVitamin),
+                child: Text("Tanggal Produksi: "+data.TanggalProduksi),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(33, 0, 10, 0),
-                child: Text("Nama Vitamin: "+data.NamaVitamin),
+                child: Text("Jenis Produk: "+data.JenisProduk),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(33, 0, 10, 0),
-                child: Text("Jenis Ternak: "+data.JenisTernak),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(33, 0, 10, 10),
-                child: Text("Status: "+data.Status),
+                child: Text("Jumlah Produk: "+'${data.Jumlah}'),
               ),
             ],
           ),
@@ -94,6 +89,6 @@ Widget buildData(Data data) => Column(
 );
 
 
-Stream<List<Data>> readData() => FirebaseFirestore.instance.collection("data_asupan_vitamin_hewan_ternak")
+Stream<List<Data>> readData() => FirebaseFirestore.instance.collection("produksi_peternakan").where('JenisProduk', isEqualTo: "Susu")
 .snapshots().map((snapshots)=> 
 snapshots.docs.map((doc) => Data.fromJson(doc.data())).toList());

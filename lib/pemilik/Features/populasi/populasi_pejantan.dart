@@ -1,23 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:farm_o/components/components.dart';
+import 'dart:js';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../../Features/Penjadwalan/dataasupanvitamin.dart';
+import 'package:flutter/material.dart';
+import '../../../Features/Populasi/data.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:farm_o/components/components.dart';
 
-class show_data_asupan_vitamin extends StatefulWidget {
-  const show_data_asupan_vitamin({ Key? key }) : super(key: key);
+class populasi_pejantan extends StatefulWidget {
+  const populasi_pejantan({ Key? key }) : super(key: key);
 
   @override
-  State<show_data_asupan_vitamin> createState() => _show_data_asupan_vitaminState();
+  State<populasi_pejantan> createState() => _populasi_pejantanState();
 }
 
-class _show_data_asupan_vitaminState extends State<show_data_asupan_vitamin> {
+class _populasi_pejantanState extends State<populasi_pejantan> {
   final controlID = TextEditingController();
   final controlJenisTernak = TextEditingController();
-  final controlNamaVitamin = TextEditingController();
-  final controlTanggalAsupanVitamin = TextEditingController();
-  final controlStatus = TextEditingController();
+  final controlJumlah = TextEditingController();
+  final controlTanggalPendataan = TextEditingController();
+  final controlKesehatanTernak = TextEditingController();
 
   @override
   Widget build(BuildContext context ) {
@@ -26,7 +27,7 @@ class _show_data_asupan_vitaminState extends State<show_data_asupan_vitamin> {
     return Scaffold(
       backgroundColor: Colors.greenAccent.shade100,
       appBar: AppBar(
-        title: Text("Data Asupan Vitamin Hewan Ternak"),
+        title: Text("Data Populasi Hewan Ternak"),
       ),
       body: SingleChildScrollView(
         child: StreamBuilder<List<Data>>(
@@ -55,14 +56,14 @@ Widget buildData(Data data) => Column(
   mainAxisAlignment: MainAxisAlignment.end,
   children: [
     Card(
-      margin: EdgeInsets.symmetric(horizontal: 580, vertical: 40),
+      margin: EdgeInsets.symmetric(horizontal: 590, vertical: 20),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       color: Color.fromARGB(255, 255, 255, 255),
       child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-            child: Image.asset("assets/fbg3.png", width: 80,),
+          Container(
+            child: Image.asset("assets/fbg4.png", width: 80,),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,19 +72,19 @@ Widget buildData(Data data) => Column(
                 // color: Colors.blue,
                 padding: EdgeInsets.fromLTRB(33, 10, 10, 0),
                 // margin: EdgeInsets.all(10),
-                child: Text("Tanggal Asupan Vitamin: "+data.TanggalAsupanVitamin),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(33, 0, 10, 0),
-                child: Text("Nama Vitamin: "+data.NamaVitamin),
+                child: Text("Tanggal Pendataan: "+data.TanggalPendataan),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(33, 0, 10, 0),
                 child: Text("Jenis Ternak: "+data.JenisTernak),
               ),
               Container(
+                padding: EdgeInsets.fromLTRB(33, 0, 10, 0),
+                child: Text("Jumlah Ternak: "+'${data.Jumlah}'),
+              ),
+              Container(
                 padding: EdgeInsets.fromLTRB(33, 0, 10, 10),
-                child: Text("Status: "+data.Status),
+                child: Text("Status: "+data.KesehatanTernak),
               ),
             ],
           ),
@@ -94,6 +95,6 @@ Widget buildData(Data data) => Column(
 );
 
 
-Stream<List<Data>> readData() => FirebaseFirestore.instance.collection("data_asupan_vitamin_hewan_ternak")
+Stream<List<Data>> readData() => FirebaseFirestore.instance.collection("populasi_hewan_ternak").where('JenisTernak', isEqualTo:"Pejantan" )
 .snapshots().map((snapshots)=> 
 snapshots.docs.map((doc) => Data.fromJson(doc.data())).toList());
